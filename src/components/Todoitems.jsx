@@ -31,6 +31,13 @@ const TodoItems = () => {
 
     setTodos((prevTodos) => [newTodo, ...prevTodos]);
 
+    setTodos((prevTodos) => {
+      const filteredTodos = prevTodos.filter(
+        (todo) => todo.name !== "Add new Task"
+      );
+      return filteredTodos;
+    });
+
     setTodo("");
     setDate("");
     setEmptyTaskError(false);
