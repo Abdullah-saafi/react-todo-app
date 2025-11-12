@@ -106,7 +106,7 @@ const TodoItems = () => {
         </div>
       </div>
 
-      <div className="TodoItems bg-white shadow-md rounded-xl p-4   sm:m-6 md:m-10">
+      <div className="TodoItems bg-white shadow-md rounded-xl p-4 m-3 sm:m-6 md:m-10">
         {todos.map((todo, index) => (
           <div
             key={index}
