@@ -58,11 +58,10 @@ const TodoItems = () => {
   const handleTaskComp = (index) => {
     setTodos((prev) => {
       const updatedTodos = prev.map((todo, i) =>
-        i === index
-          ? { ...todo, completed: true }
-          : todo
+        i === index ? { ...todo, completed: !todo.completed } : todo
       );
 
+      // Move incomplete tasks to top, completed to bottom
       const incomplete = updatedTodos.filter((todo) => !todo.completed);
       const complete = updatedTodos.filter((todo) => todo.completed);
 
@@ -102,7 +101,8 @@ const TodoItems = () => {
                   onChange={handleDateChange}
                   className="border-2 border-gray-200 text-sm md:text-md md:text-xl rounded-xl pl-2   md:px-5 py-3"
                 />
-                <IoCalendarNumber className="absolute sm:hidden right-4 text-2xl text-gray-400 pointer-events-none" />
+                <span className="absolute  flex text-md bg-[var(--primary-color)] border-1 border-white w-full h-full overflow-hidden text-gray-400 pointer-events-none rounded-xl justify-between px-2 items-center">Add Date <IoCalendarNumber className="text-xl" /></span>
+
                 {emptyDateError && (
                   <p className="text-red-600 text-sm mt-1">Please select a date</p>
                 )}
