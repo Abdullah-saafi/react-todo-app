@@ -62,18 +62,16 @@ const TodoItems = () => {
           : todo
       );
 
-      // Separate incomplete and complete tasks
       const incomplete = updatedTodos.filter((todo) => !todo.completed);
       const complete = updatedTodos.filter((todo) => todo.completed);
 
-      // Return incomplete first, completed at bottom
       return [...incomplete, ...complete];
     });
   };
 
   return (
     < >
-      <div className="bg-[var(--primary-color)] h-screen ">
+      <div className="bg-[var(--primary-color)] h-screen  ">
         <h1 className="text-center font-bold text-4xl sm:text-6xl md:sm:text-8xl mb-10 shadow-lg shadow-white-600 py-6">
           TO-DO App
         </h1>
@@ -172,6 +170,7 @@ const TodoItems = () => {
           </div>
 
         </div>
+        <footer className="absolute w-full bottom-0 text-center py-5" >Coded <span className="text-red-300 cursor-pointer active:text-red-600 hover:text-red-600 transition duration-600"> Abdullah Saafi</span></footer>
       </div >
     </>
   );
