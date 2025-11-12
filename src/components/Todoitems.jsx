@@ -67,7 +67,7 @@ const TodoItems = () => {
         TO-DO App
       </h1>
 
-      <div className="Todo-Input flex flex-col sm:flex-row gap- justify-center sm:items-start items-center gap-3  m-4">
+      <div className="Todo-Input flex flex-col sm:flex-row gap- justify-center sm:items-start items-center gap-3  mb-10 ">
         <div className="">
           <input
             type="text"
@@ -106,7 +106,7 @@ const TodoItems = () => {
         </div>
       </div>
 
-      <div className="TodoItems bg-white shadow-md rounded-xl p-4 m-4 sm:m-6 md:m-10">
+      <div className="TodoItems bg-white shadow-md rounded-xl p-4   sm:m-6 md:m-10">
         {todos.map((todo, index) => (
           <div
             key={index}
