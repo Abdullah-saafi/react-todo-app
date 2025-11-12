@@ -82,7 +82,7 @@ const TodoItems = () => {
               onChange={handleDateChange}
               className="border-2 border-gray-200 text-sm md:text-xl rounded-xl pl-4 md:px-5 py-3 "
             />
-            <IoCalendarNumber className="absolute right-1 md:right-5 text-gray-400 text-xl md:text-3xl pointer-events-none" />
+            <IoCalendarNumber className="absolute right-5 md:right-5 text-gray-400 text-xl md:text-3xl pointer-events-none" />
             {emptyDateError && (
               <p className="text-red-600 text-sm mt-1 absolute top-full">
                 Please select a date
