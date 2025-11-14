@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FaCheck } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { IoCalendarNumber } from "react-icons/io5";
 
 const TodoItems = () => {
-  const [addTodo, setTodo] = useState("");
-  const [addDate, setDate] = useState("");
+
+  const addTodoElem = useRef();
+  const addDateElem = useRef();
+
   const [emptyTaskError, setEmptyTaskError] = useState(false);
   const [emptyDateError, setEmptyDateError] = useState(false);
 
@@ -15,10 +17,13 @@ const TodoItems = () => {
     { name: "Add new Task", dueDate: currentDate, completed: false },
   ]);
 
-  const handleAddTodo = (e) => { setTodo(e.target.value) }
-  const handleDateChange = (e) => { setDate(e.target.value); };
 
-  const addBtn = () => {
+
+  const addBtn = (event) => {
+    event.preventDefault()
+    const addTodo = addTodoElem.current.value;
+    const addDate = addDateElem.current.value;
+
     if (addTodo === "") {
       setEmptyTaskError(true);
       return;
@@ -38,8 +43,8 @@ const TodoItems = () => {
       return filteredTodos;
     });
 
-    setTodo("");
-    setDate("");
+    addTodoElem.current.value = "";
+    addDateElem.current.value = "";
     setEmptyTaskError(false);
     setEmptyDateError(false);
   };
@@ -67,12 +72,11 @@ const TodoItems = () => {
         TO-DO App
       </h1>
 
-      <div className="Todo-Input flex flex-col sm:flex-row gap- justify-center sm:items-start items-center gap-3  mb-10 ">
+      <form className="Todo-Input flex flex-col sm:flex-row gap- justify-center sm:items-start items-center gap-3  mb-10 " onSubmit={addBtn}>
         <div className="">
           <input
             type="text"
-            value={addTodo}
-            onChange={handleAddTodo}
+            ref={addTodoElem}
             placeholder="Add new Task"
             className="border-2 border-gray-200 text-sm md:text-xl rounded-xl py-3 pl-6 "
           />
@@ -85,8 +89,7 @@ const TodoItems = () => {
           <div className="relative  flex items-center">
             <input
               type="date"
-              value={addDate}
-              onChange={handleDateChange}
+              ref={addDateElem}
               className="border-2 border-gray-200 text-sm md:text-xl rounded-xl pl-4 md:px-5 py-3 "
             />
             <IoCalendarNumber className="absolute right-5 md:right-5 text-gray-400 text-xl md:text-3xl pointer-events-none" />
@@ -98,13 +101,13 @@ const TodoItems = () => {
           </div>
 
           <button
-            onClick={addBtn}
+
             className="bg-green-600 text-white text-sm sm:text-xl rounded-xl px-6 py-3 active:bg-green-700 transition-colors duration-300"
           >
             Add
           </button>
         </div>
-      </div>
+      </form>
 
       <div className="TodoItems bg-white shadow-md rounded-xl p-4 m-3 sm:m-6 md:m-10">
         {todos.map((todo, index) => (
@@ -171,3 +174,4 @@ const TodoItems = () => {
 };
 
 export default TodoItems;
+
